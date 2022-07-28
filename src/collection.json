@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "obj-for-dto": {
+      "description": "DTO Generator Schematic.",
+      "factory": "./obj-for-dto/index#objForDto",
+      "schema": "./obj-for-dto/schema.json"
+    },
+    "ng-add": {
+      "description": "Add obj-for-dto schematic to the project.",
+      "factory": "./ng-add/index#ngAdd"
+    }
+  }
+}
