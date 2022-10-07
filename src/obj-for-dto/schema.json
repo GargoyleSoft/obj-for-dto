@@ -17,6 +17,7 @@
       "description": "Where the files will be created",
       "type": "string",
       "format": "path",
+      "x-prompt": "Where should the files be created?",
       "default": "src/app"
     },
     "propertyNames": {

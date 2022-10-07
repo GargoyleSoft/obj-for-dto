@@ -323,7 +323,7 @@ export function objForDto(options: Options): Rule {
                 extras: extraString,
                 dtocmd: `ng generate @gargoylesoft/obj-for-dto:obj-for-dto ${className} ${options.propertyNames.trim()}`
             }),
-            move(`/${options.path}/${strings.dasherize(options.name)}`)
+            move(normalize(`/${options.path}`))
         ])
 
         return chain([
