@@ -28,8 +28,7 @@ export class Property {
 
         if (this.isArray)
             str += '[]'
-
-        if (this.isOptional)
+        else if (this.isOptional)
             str += ' | null'
 
         return str
@@ -54,8 +53,7 @@ export class Property {
 
         if (this.isArray)
             str += '[]'
-
-        if (this.isOptional)
+        else if (this.isOptional)
             str += ' | null'
 
         return str
