@@ -1,6 +1,6 @@
 {
   "name": "@gargoylesoft/obj-for-dto",
-  "version": "1.1.1",
+  "version": "1.2.2",
   "description": "Create an object and DTO for network retrieved JSON",
   "scripts": {
     "build": "yarn run tsc -p tsconfig.json",
@@ -21,8 +21,8 @@
   "homepage": "https://github.com/gargoylesoft/obj-for-dto#readme",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^14.0.3",
-    "@angular-devkit/schematics": "^14.0.3",
+    "@angular-devkit/core": "^15.0.0",
+    "@angular-devkit/schematics": "^15.0.0",
     "typescript": "~4.7.2"
   },
   "devDependencies": {
@@ -30,8 +30,8 @@
     "copyfiles": "^2.4.1"
   },
   "peerDependencies": {
-    "@angular/common": "^14.1.0",
-    "@angular/core": "^14.1.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
   },
   "publishConfig": {
     "access": "public"

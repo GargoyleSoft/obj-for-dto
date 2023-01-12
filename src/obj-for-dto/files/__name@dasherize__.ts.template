@@ -1,21 +1,21 @@
-<%= sourceObjectImports %>export type I<%= className %> = {
-<%= properties %>
+<% if (imports) { %><%= imports %>
+
+<% } %>export type I<%= className %> = {
+<%= interfaceLines %>
 }
 
-export type <%= className %>DTO = Partial<I<%= className %>>
+<%= dtoLine %>
 
 export class <%= className %> implements I<%= className %> {
     constructor(
-<%= constructor %>
+<%= constructorParameters %>
     ) {
     }
 
     static fromJson(json: <%= className %>DTO | null | undefined): <%= className %> | undefined {
-        if (<%= checks %>)
+        if (!<%= checks %>)
             return undefined
 
-        <%= extras %>return new <%= className %>(<%= constructorComma %>)
+<% if (extras) { %><%= extras %><% } %>        return new <%= className %>(<%= constructorComma %>)
     }
 }
-
-// DTO Command: <%= dtocmd %>
