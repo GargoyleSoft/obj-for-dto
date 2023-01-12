@@ -1,6 +1,6 @@
 {
   "name": "@gargoylesoft/obj-for-dto",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Create an object and DTO for network retrieved JSON",
   "scripts": {
     "build": "yarn run tsc -p tsconfig.json",
