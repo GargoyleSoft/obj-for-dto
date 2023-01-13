@@ -69,6 +69,43 @@ an error if any results failed to parse.
 
 ## Example
 
+Create a simple `Employee` model:
+
+```bash
+ng g @gargoylesoft/obj-for-dto:obj-for-dto Employee name,email,wwid:n,active:b
+```
+
+results in the following file being created:
+
+```typescript
+import {hasValue} from '../has-value'
+
+export type IEmployee = {
+   active: boolean
+   email: string
+   name: string
+   wwid: number
+}
+
+export type EmployeeDTO = Partial<IEmployee>
+
+export class Employee implements IEmployee {
+    constructor(
+      public readonly active: boolean,
+      public readonly email: string,
+      public readonly name: string,
+      public readonly wwid: number
+    ) {
+    }
+
+    static fromJson(json: EmployeeDTO | null | undefined): Employee | undefined {
+        if (!(json && hasValue(json.active) && json.email && json.name && hasValue(json.wwid)))
+            return undefined
+
+        return new Employee(json.active, json.email, json.name, json.wwid)
+    }
+}
+```
 Showing all possibilities by using a name of `Example` and a property list of `requiredString,optionalString:s?,requiredStringArray:s[],optionalStringArray:s[]?,requiredDate:d,optionalDate:d?,requiredDateArray:d[],optionalDateArray:d[]?,requiredNumber:n,optionalNumber:n?,requiredNumberArray:n[],optionalNumberArray:n[]?,requiredBoolean:b,optionalBoolean:b?,requiredBooleanArray:b[],optionalBooleanArray:b[]?,requiredEmployee:Employee,optionalEmployee:Employee?,requiredEmployeeArray:Employee[],optionalEmployeeArray:Employee[]?`
 
 results in the following file being created:

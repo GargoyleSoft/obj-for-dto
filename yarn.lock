@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@angular-devkit/core@15.1.0", "@angular-devkit/core@^15.0.0":
+"@angular-devkit/core@15.1.0", "@angular-devkit/core@>= 14.0.0":
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.1.0.tgz#677207d67d0142c5c944fc8d324d7b68a2df8aec"
   integrity sha512-4FkoYgfuttp0ZD8NaVRr9Ya7kgSMkrXjJ5JIFlR4F49kTJXUpNB5xZeTS5CPh+wuP3o4IXpzn4A6M9vluJ5TFw==
@@ -13,7 +13,7 @@
     rxjs "6.6.7"
     source-map "0.7.4"
 
-"@angular-devkit/schematics@^15.0.0":
+"@angular-devkit/schematics@15.1.0", "@angular-devkit/schematics@>= 14.0.0":
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-15.1.0.tgz#3748c442ce0a45baeb86ba075bad6667090c8a91"
   integrity sha512-uCvxdhOZLRAjzUSPphVhAuAmUJ66FsQsyOD48gGr3Dpz0yNY570ill5CoBCMNbsP110p8E3O6OFXkbSxgDxEUA==
@@ -28,6 +28,15 @@
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
   integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
+
+"@schematics/angular@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-15.1.0.tgz#5e4f6373c791bda5f18fa506cfa526f0f6f21f1b"
+  integrity sha512-TOtmPcMOZTLteoJsXYZ5qRUaOKlZkq62TVV8nt9+I+e2SZ/G9zVr1KXWweCPwFje0y4W1KrHUw6e4sMNkD1f4A==
+  dependencies:
+    "@angular-devkit/core" "15.1.0"
+    "@angular-devkit/schematics" "15.1.0"
+    jsonc-parser "3.2.0"
 
 "@types/node@^14.15.0":
   version "14.18.36"

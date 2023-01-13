@@ -3,7 +3,6 @@ import {dasherize} from '@angular-devkit/core/src/utils/strings'
 import {
     apply,
     applyTemplates,
-    chain,
     MergeStrategy,
     mergeWith,
     move,
@@ -13,8 +12,10 @@ import {
     Tree,
     url
 } from '@angular-devkit/schematics'
+import {getWorkspace} from '@schematics/angular/utility/workspace'
 import * as fs from 'fs'
 import * as process from 'process'
+import {ensurePath} from './ensurePath'
 import {Options} from './options'
 import {Property} from './property'
 import path = require('path')
@@ -45,12 +46,25 @@ const findHasValue = (): string => findFile('has-value.ts')
 const hasValue = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined
 
 export function objForDto(options: Options): Rule {
-    return (_tree: Tree, _context: SchematicContext) => {
+    return async (tree: Tree, _context: SchematicContext) => {
         if (!options.name)
             throw new SchematicsException('Must provide class name')
 
         if (!options.propertyNames)
             throw new SchematicsException('Must provide property names')
+
+        const workspace = await getWorkspace(tree)
+        const projectValue = workspace.projects.keys().next().value as string
+
+        const project = workspace.projects.get(projectValue)
+        if (project) {
+            _context.logger.info(project.root)
+            _context.logger.info(project.prefix as string)
+            _context.logger.info(project.sourceRoot as string)
+        }
+
+        await ensurePath(tree, options)
+        _context.logger.info(options.path as string)
 
         const className = strings.classify(options.name)
 
@@ -167,11 +181,9 @@ export function objForDto(options: Options): Rule {
                 checks: checks.length > 0 ? `(json && ${checks.join(' && ')})` : 'json',
                 extras: extras.join('\n')
             }),
-            move(normalize(`/${options.path}`))
+            move(options.name as string)
         ])
 
-        return chain([
-            mergeWith(source, MergeStrategy.Overwrite)
-        ])
+        return mergeWith(source, MergeStrategy.Overwrite)
     }
 }
