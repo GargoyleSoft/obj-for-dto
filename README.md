@@ -184,7 +184,7 @@ export class Example implements IExample {
         }
 
         const optionalDate = json.optionalDate ? new Date(json.optionalDate) : null
-        if (optionalDate && isFinite(optionalDate.getTime()))
+        if (optionalDate && !isFinite(optionalDate.getTime()))
             return undefined
 
         let optionalDateArray: Date[] = []
@@ -230,7 +230,7 @@ export class Example implements IExample {
             return undefined
 
         const requiredDate = new Date(json.requiredDate)
-        if (isFinite(requiredDate.getTime()))
+        if (!isFinite(requiredDate.getTime()))
             return undefined
 
         let requiredDateArray: Date[] = []

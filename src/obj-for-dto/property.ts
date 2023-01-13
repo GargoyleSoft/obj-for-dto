@@ -170,11 +170,11 @@ export class Property {
                 lines.push('}')
         } else if (this.isOptional) {
             lines.push(`const ${this.name} = ${this.#jsonName} ? new Date(${this.#jsonName}) : null`)
-            lines.push(`if (${this.name} && isFinite(${this.name}.getTime()))`)
+            lines.push(`if (${this.name} && !isFinite(${this.name}.getTime()))`)
             lines.push(`${spaces}return undefined`)
         } else {
             lines.push(`const ${this.name} = new Date(${this.#jsonName})`)
-            lines.push(`if (isFinite(${this.name}.getTime()))`)
+            lines.push(`if (!isFinite(${this.name}.getTime()))`)
             lines.push(`${spaces}return undefined`)
         }
 
